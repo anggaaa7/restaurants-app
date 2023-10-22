@@ -6,7 +6,8 @@
   padding: 0;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
 }
@@ -36,6 +37,7 @@ html, body {
   justify-content: space-between;
   align-items: center;
   padding: 0 16px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 .logo {
@@ -80,14 +82,14 @@ html, body {
   color: #1976d2;
 }
 
-.header .header-menu{
-  font-size: 24px;
-  color: #fff;
+.header .header-menu {
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  padding: 8px;
+  cursor: pointer;
   min-width: 44px;
   min-height: 44px;
-  box-shadow: none;
-  cursor: pointer;
-  background-color: transparent;
 }
 
 .header .header-menu:hover {
@@ -156,10 +158,11 @@ html, body {
 }
 
 .hero-title {
-  font-size: 48px;
-  font-weight: 700;
+  font-size: 96px;
+  font-weight: 200;
   color: #fff;
   margin-bottom: 16px;
+  font-family: 'Brush Script MT', cursive;
 }
 
 .hero-tagline {
@@ -174,13 +177,150 @@ main {
   padding: 16px;
 }
 
-main h1 {
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.content {
+  margin: 0 auto;
+  min-height: 100%;
+}
+
+.content .content__heading {
+  font-family: 'Open Sans', sans-serif;
   font-size: 32px;
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-weight: bold;
   text-align: center;
-  margin-top: 32px;
-  font-family: 'open sans', sans-serif;
+  margin-bottom: 16px;
+}
+
+.restaurants {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.restaurants .resto-item:hover {
+  transform: scale(1.05);
+}
+
+
+.resto-item {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease-out;
+  font-size: 14px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.resto-item-header {
+  padding: 16px;
+}
+
+.resto-item-header .resto-title .resto-name {
+  font-size: 18px;
+  margin-bottom: 8px;
+  text-decoration: none;
+  color: #000;
+}
+
+.resto-item-header .resto-thumbnail {
+  width: 100%;
+  display: grid;
+  border-radius: 8px;
+  overflow: hidden;
+  /* Mengatasi gambar yang mungkin terlalu besar */
+}
+
+.resto-item-header .resto-thumbnail img {
+  width: 100%;
+  /* Agar gambar mengisi seluruh kontainer */
+  height: auto;
+  /* Memastikan aspek ratio tetap terjaga */
+}
+
+.resto-item .resto-info {
+  padding: 16px;
+}
+
+.restaurant {
+  margin: 0 auto;
+  margin-bottom: 32px;
+  width: 100%;
+  max-width: 10000px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px 16px;
+  border: #ccc 1px solid;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.restaurant .resto-title {
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  margin-top: 16px;
+}
+
+.restaurant .resto-thumbnail {
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  border-radius: 30px;
+  overflow: hidden;
+  /* Mengatasi gambar yang mungkin terlalu besar */
+}
+
+.restaurant .resto-info {
+  padding: 16px;
+}
+
+.restaurant .resto-menu {
+  padding: 16px;
+}
+
+.restaurant .resto-menu ul {
+  list-style-type: none;
+  font-size: 17px;
+}
+
+.restaurant .resto-reviews {
+  padding: 16px;
+}
+
+.restaurant h3 {
+  font-size: 20px;
+}
+
+.restaurant p {
+  font-size: 18px;
+}
+
+/* like */
+.like {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1976d2;
+
+  position: fixed;
+  bottom: 12%;
+  right: 50px;
+  border-radius: 50%;
+  border: 0;
+
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
 }
 
 /* styling footer */
@@ -209,27 +349,27 @@ main h1 {
   .header {
     min-height: 64px;
   }
-  
+
   .logo {
     font-size: 32px;
   }
-  
+
   .header .header-menu {
     display: none;
   }
-  
+
   #drawer {
     display: none;
   }
-  
+
   .hero {
     min-height: 480px;
   }
-  
+
   .hero-title {
     font-size: 64px;
   }
-  
+
   .hero-tagline {
     font-size: 32px;
   }
@@ -241,11 +381,11 @@ main h1 {
   main h1 {
     font-size: 48px;
   }
-  
+
   .footer {
     padding: 16px 32px;
   }
-  
+
   .footer .footer-inner p {
     margin-right: 32px;
   }
@@ -256,13 +396,3 @@ main h1 {
     display: none;
   }
 }
-
-
-
-
-
-
-
-
-
-

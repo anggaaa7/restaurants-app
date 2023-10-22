@@ -4,26 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Restaurant Apps</title>
+  <meta name="theme-color" content="#393646" />
 
+  <title>Restaurant.zone</title>
+
+  <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css" />
+  <link rel="manifest" href="./app.webmanifest">
+  <link rel="icon" href="./favicon.png">
+
+  <script src="https://use.fontawesome.com/b070c8f1df.js"></script>
 </head>
 
 <body>
   <!-- skip to konten -->
   <a href="#main-content" class="skip-link">Menuju Konten</a>
-  
+
   <!-- header -->
   <header class="header">
     <button id="menu" class="header-menu">☰</button>
     <div class="nav-menu">
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="#">Favorite</a></li>
+        <li><a href="#/home">Home</a></li>
+        <li><a href="#/favorit">Favorite</a></li>
       </ul>
     </div>
     <div class="logo">
-      <a href="index.html">
+      <a href="#/home">
         Delicious.zone
       </a>
     </div>
@@ -35,17 +42,17 @@
     <nav id="drawer" class="header-nav">
       <ul class="nav">
         <li class="nav-item">
-          <a href="index.html" class="nav-link">Home</a>
+          <a href="#/home" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link">Favorite</a>
+          <a href="#/favorit" class="nav-link">Favorite</a>
         </li>
         <li class="nav-item">
           <a href="https://www.instagram.com/er.anggaa_/" class="nav-link">About Us</a>
         </li>
       </ul>
   </header>
-  
+
   <!-- Jumbroton -->
   <div class="hero">
     <div class="hero-inner">
@@ -57,17 +64,16 @@
     </div>
   </div>
 
-<!-- Main -->
+  <!-- Main -->
   <main id="main-content">
-    <h1>Daftar Restaurant</h1>
-    <resto-list></resto-list>
   </main>
-  
-<!-- Footer -->
+
+  <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
       <p>Copyright &copy; 2023 - Delicious.zone</p>
     </div>
   </footer>
 </body>
+
 </html>
