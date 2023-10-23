@@ -377,46 +377,38 @@ main {
 
   .hero {
     min-height: 200px;
-    /* Mengurangi ketinggian hero untuk layar yang lebih kecil */
   }
 
   .hero-inner {
     margin-top: 16px;
-    /* Mengurangi margin atas hero */
   }
 
   .hero-title {
     font-size: 32px;
-    /* Mengurangi ukuran font judul hero */
   }
 
   .hero-tagline {
     font-size: 16px;
-    /* Mengurangi ukuran font tagline hero */
   }
 
   main {
     padding: 16px 0;
-    /* Mengurangi padding pada konten utama */
   }
 
   main h1 {
     font-size: 32px;
-    /* Mengurangi ukuran font judul di konten utama */
   }
 
   .restaurants .resto-item {
     width: 100%;
-    /* Mengisi lebar penuh */
   }
 
   .restaurants .resto-item-header .resto-title .resto-name {
     font-size: 20px;
-    /* Mengurangi ukuran font nama restoran */
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
   .header {
     min-height: 64px;
   }
