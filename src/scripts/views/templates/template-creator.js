@@ -2,7 +2,7 @@ import CONFIG from '../../golbals/config';
 
 const createRestaurantDetailTemplate = (restaurant) => `
     <h2 class="resto-title">${restaurant.name}</h2>
-    <img class="resto-thumbnail lazyload" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
+    <img crossorigin="anonymouse" class="resto-thumbnail lazyload" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
     <div class="resto-info">
         <h3>City</h3>
         <p>${restaurant.city}</p>
@@ -41,7 +41,7 @@ const createRestaurantDetailTemplate = (restaurant) => `
 const createRestaurantItemTemplate = (restaurant) => `
     <div class="resto-item" tabindex="0">
         <div class="resto-item-header">
-            <img class="resto-thumbnail lazyload" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
+            <img crossorigin="anonymouse" class="resto-thumbnail lazyload" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name}" />
             <h2 class="resto-title"><a class="resto-name" href="${`/#/detail/${restaurant.id}`}">${restaurant.name}</a></h2>
             <p>⭐️<span class="resto-item__rating">${restaurant.rating}</span></p>
         </div>
