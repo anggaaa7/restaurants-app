@@ -20,6 +20,8 @@ body {
   color: #fff;
   padding: 8px;
   z-index: 100;
+  min-height: 54px;
+  min-width: 54px;
 }
 
 .skip-link:focus {
@@ -40,17 +42,19 @@ body {
   font-family: 'Courier New', Courier, monospace;
 }
 
-.logo {
-  margin: 0 auto;
+.header .header-menu {
+  display: flex;
+  background-color: transparent;
+  border: none;
+  font-size: 26px;
+  padding: 8px;
+  cursor: pointer;
+  min-width: 54px;
+  min-height: 54px;
 }
 
-.logo a {
-  min-height: 44px;
-  font-size: 44px;
-  color: #fff;
-  text-decoration: none;
-  font-weight: 200;
-  font-family: 'Brush Script MT', cursive;
+.header .header-menu:focus {
+  color: #1976d2;
 }
 
 .header .nav-menu {
@@ -61,42 +65,47 @@ body {
 .header .nav-menu ul {
   display: flex;
   align-items: center;
+  list-style: none;
 }
 
 .header .nav-menu li {
-  list-style-type: none;
+  display: flex;
+  list-style: none;
 }
 
 .header .nav-menu li a {
   display: flex;
-  min-width: 44px;
-  min-height: 44px;
   text-decoration: none;
   color: #fff;
   font-size: 18px;
+  padding: 8px;
   margin-right: 16px;
   align-items: center;
+  min-height: 44px;
+  /* Ubah ke 44px */
+  min-width: 44px;
+  /* Ubah ke 44px */
 }
 
 .header .nav-menu li a:hover {
   color: #1976d2;
 }
 
-.header .header-menu {
-  background-color: transparent;
-  border: none;
-  font-size: 18px;
-  padding: 8px;
-  cursor: pointer;
-  min-width: 44px;
-  min-height: 44px;
+.header .logo {
+  margin: 0 auto;
 }
 
-.header .header-menu:hover {
-  color: #1976d2;
+.header .logo a {
+  min-height: 54px;
+  font-size: 54px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 200;
+  font-family: 'Brush Script MT', cursive;
 }
 
 #drawer {
+  display: flex;
   position: fixed;
   top: 72px;
   left: 0;
@@ -107,11 +116,6 @@ body {
   z-index: 100;
   transform: translateX(-100%);
   transition: transform 0.3s ease-out;
-  display: flex;
-}
-
-#drawer.open {
-  transform: translateX(0);
 }
 
 #drawer ul {
@@ -120,56 +124,66 @@ body {
 }
 
 #drawer ul li {
-  border-bottom: 1px solid #ccc;
+  list-style: none;
   text-align: center;
   height: 48px;
+  border-bottom: 1px solid #ccc;
 }
 
-#drawer ul li a {
+#drawer li a {
   display: flex;
   align-items: center;
-  text-decoration: none;
-  color: #000;
-  min-height: 44px;
-  min-width: 44px;
-  font-size: 18px;
   justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  color: #393646;
+  font-size: 18px;
 }
 
-#drawer ul li a:hover {
-  color: #1976d2;
+#drawer li a:hover {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+#drawer.open {
+  transform: translateX(0);
 }
 
 /* styling jumbroton */
 .hero {
+  background-image: url(../public/images/heros/hero-image_4.jpg);
+  min-height: 380px;
+  background-color: #393646;
+  width: 100%;
+  height: auto;
+  color: #fff;
   display: flex;
   align-items: center;
-  min-height: 380px;
-  width: 100%;
-  background-color: #1976d2;
-  text-align: center;
-  background-image: url(../public/images/heros/hero-image_4.jpg);
-  background-position: center;
+  justify-content: center;
+
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
 }
 
 .hero-inner {
   width: 100%;
   padding: 0 16px;
+  margin-top: 50px;
 }
 
 .hero-title {
-  font-size: 96px;
-  font-weight: 200;
-  color: #fff;
-  margin-bottom: 16px;
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
   font-family: 'Brush Script MT', cursive;
 }
 
 .hero-tagline {
   font-size: 24px;
-  font-weight: 400;
-  color: #fff;
-  margin-bottom: 16px;
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /* styling main */
@@ -225,10 +239,13 @@ main {
 }
 
 .resto-item-header .resto-title .resto-name {
-  font-size: 18px;
+  font-size: 24px;
   margin-bottom: 8px;
   text-decoration: none;
   color: #000;
+  min-height: 44px;
+  min-width: 44px;
+  display: flex;
 }
 
 .resto-item-header .resto-thumbnail {
@@ -345,6 +362,60 @@ main {
 }
 
 /* responsive layar/media screen styling */
+@media screen and (max-width: 768px) {
+  .header .nav-menu {
+    display: none;
+  }
+
+  .header .header-menu {
+    display: block;
+  }
+
+  #drawer {
+    display: block;
+  }
+
+  .hero {
+    min-height: 200px;
+    /* Mengurangi ketinggian hero untuk layar yang lebih kecil */
+  }
+
+  .hero-inner {
+    margin-top: 16px;
+    /* Mengurangi margin atas hero */
+  }
+
+  .hero-title {
+    font-size: 32px;
+    /* Mengurangi ukuran font judul hero */
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    /* Mengurangi ukuran font tagline hero */
+  }
+
+  main {
+    padding: 16px 0;
+    /* Mengurangi padding pada konten utama */
+  }
+
+  main h1 {
+    font-size: 32px;
+    /* Mengurangi ukuran font judul di konten utama */
+  }
+
+  .restaurants .resto-item {
+    width: 100%;
+    /* Mengisi lebar penuh */
+  }
+
+  .restaurants .resto-item-header .resto-title .resto-name {
+    font-size: 20px;
+    /* Mengurangi ukuran font nama restoran */
+  }
+}
+
 @media screen and (min-width: 768px) {
   .header {
     min-height: 64px;
@@ -391,8 +462,51 @@ main {
   }
 }
 
-@media screen and (max-width: 768px) {
-  .header .nav-menu {
-    display: none;
+@media screen and (max-width: 430px) {
+  .header .header-menu {
+    font-size: 18px;
+    /* Ubah ukuran font menu */
+  }
+
+  .header .logo a {
+    font-size: 36px;
+    /* Ubah ukuran font logo */
+  }
+
+  .hero .hero-inner {
+    padding: 0 8px;
+    /* Ubah padding hero */
+  }
+
+  .hero-title {
+    font-size: 24px;
+    /* Ubah ukuran font judul hero */
+  }
+
+  .hero-tagline {
+    font-size: 16px;
+    /* Ubah ukuran font tagline hero */
+  }
+}
+
+@media screen and (max-width: 250px) {
+  .header .header-menu {
+    font-size: 16px;
+    /* Ubah ukuran font menu */
+  }
+
+  .header .logo a {
+    font-size: 1em;
+    /* Ubah ukuran font logo */
+  }
+
+  .hero-title {
+    font-size: 18px;
+    /* Ubah ukuran font judul hero */
+  }
+
+  .hero-tagline {
+    font-size: 12px;
+    /* Ubah ukuran font tagline hero */
   }
 }
