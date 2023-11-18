@@ -197,7 +197,7 @@ describe('Searching restaurants', () => {
         .getElementById('restaurant-search-container')
         .addEventListener('restaurants:searched:updated', () => {
           // eslint-disable-next-line no-undef
-          expect(document.querySelectorAll('.restaurants__not__found').length)
+          expect(document.querySelectorAll('.restaurant-item__not__found').length)
             .toEqual(1);
           done();
         });

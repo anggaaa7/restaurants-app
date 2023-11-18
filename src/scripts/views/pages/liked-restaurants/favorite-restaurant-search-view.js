@@ -4,27 +4,16 @@ class FavoriteRestaurantSearchView {
   // eslint-disable-next-line class-methods-use-this
   getTemplate() {
     return `
-        <div id="restaurant-search-container">
-          <input id="query" type="text">
-  
-            <div class="restaurant-result-container">
-              <ul class="restaurants">
-              </ul>
-          </div>
-        </div>
-      `;
-  }
-
-  // eslint-disable-next-line class-methods-use-this
-  getFavoriteRestaurantTemplate() {
-    return `
         <div class="content">
-            <h2 class="content__heading">Favorit</h2>
+            <input id="query" type="text">
+            <h2 class="content__heading">Your Liked Restaurant</h2>
 
-            <div id="restaurants" class="restaurants">
+            <div id="restaurant-search-container">
+              <div id="restaurants" class="restaurants">
+              </div>
             </div>
         </div>
-      `;
+    `;
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -39,14 +28,11 @@ class FavoriteRestaurantSearchView {
     let html;
     if (restaurants.length > 0) {
       html = restaurants.reduce(
-        (carry, restaurant) => carry.concat(`
-          <li class="restaurant">
-            <span class="restaurant__title">${restaurant.title || '-'}</span>
-          </li>`),
+        (carry, restaurant) => carry.concat(createRestaurantItemTemplate(restaurant)),
         '',
       );
     } else {
-      html = '<div class="restaurants__not__found">Tidak ada restaurant untuk ditampilkan</div>';
+      html = this._getEmptyRestaurantTemplate();
     }
 
     document.querySelector('.restaurants').innerHTML = html;
@@ -65,7 +51,7 @@ class FavoriteRestaurantSearchView {
         '',
       );
     } else {
-      html = '<div class="restaurant-item__not__found">Tidak ada restaurant untuk ditampilkan</div>';
+      html = this._getEmptyRestaurantTemplate();
     }
 
     document.getElementById('restaurants').innerHTML = html;
@@ -73,6 +59,11 @@ class FavoriteRestaurantSearchView {
     document
       .getElementById('restaurants')
       .dispatchEvent(new Event('restaurants:updated'));
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  _getEmptyRestaurantTemplate() {
+    return '<div class="restaurant-item__not__found">Tidak ada restaurant untuk ditampilkan</div>';
   }
 }
 
