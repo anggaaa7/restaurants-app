@@ -10,6 +10,7 @@ describe('Liking A Restaurant', () => {
   beforeEach(() => {
     addLikeButtonContainer();
   });
+
   // eslint-disable-next-line no-undef
   it('should show the like button when the restaurant has not been liked before', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
@@ -18,6 +19,7 @@ describe('Liking A Restaurant', () => {
     expect(document.querySelector('[aria-label="like this restaurant"]'))
       .toBeTruthy();
   });
+
   // eslint-disable-next-line no-undef
   it('should not show the unlike button when the restaurant has not been liked before', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
@@ -26,6 +28,7 @@ describe('Liking A Restaurant', () => {
     expect(document.querySelector('[aria-label="unlike this restaurant"]'))
       .toBeFalsy();
   });
+
   // eslint-disable-next-line no-undef
   it('should be able to like the restaurant', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
@@ -39,6 +42,7 @@ describe('Liking A Restaurant', () => {
 
     await FavoriteRestaurantIdb.deleteRestaurant(1);
   });
+
   // eslint-disable-next-line no-undef
   it('should not add a restaurant again when its already liked', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({ id: 1 });
@@ -51,6 +55,7 @@ describe('Liking A Restaurant', () => {
     expect(await FavoriteRestaurantIdb.getAllRestaurants()).toEqual([{ id: 1 }]);
     await FavoriteRestaurantIdb.deleteRestaurant(1);
   });
+
   // eslint-disable-next-line no-undef
   it('should not add a restaurant when it has no id', async () => {
     await TestFactories.createLikeButtonPresenterWithRestaurant({});

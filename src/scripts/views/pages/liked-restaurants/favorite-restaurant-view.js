@@ -1,14 +1,14 @@
 import { createRestaurantItemTemplate } from '../../templates/template-creator';
 
-class FavoriteRestaurantSearchView {
+class FavoriteRestaurantView {
   // eslint-disable-next-line class-methods-use-this
   getTemplate() {
     return `
         <div class="content">
+        <h2 class="content__heading">Your Liked Restaurant</h2>
             <input id="query" type="text">
-            <h2 class="content__heading">Your Liked Restaurant</h2>
+            
 
-            <div id="restaurant-search-container">
               <div id="restaurants" class="restaurants">
               </div>
             </div>
@@ -38,27 +38,13 @@ class FavoriteRestaurantSearchView {
     document.querySelector('.restaurants').innerHTML = html;
 
     document
-      .getElementById('restaurant-search-container')
-      .dispatchEvent(new Event('restaurants:searched:updated'));
+      .getElementById('restaurants')
+      .dispatchEvent(new Event('restaurants:updated'));
   }
 
   // eslint-disable-next-line class-methods-use-this, no-unused-vars
   showFavoriteRestaurants(restaurants) {
-    let html;
-    if (restaurants.length) {
-      html = restaurants.reduce(
-        (carry, restaurant) => carry.concat(createRestaurantItemTemplate(restaurant)),
-        '',
-      );
-    } else {
-      html = this._getEmptyRestaurantTemplate();
-    }
-
-    document.getElementById('restaurants').innerHTML = html;
-
-    document
-      .getElementById('restaurants')
-      .dispatchEvent(new Event('restaurants:updated'));
+    this.showRestaurants(restaurants);
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -67,4 +53,4 @@ class FavoriteRestaurantSearchView {
   }
 }
 
-export default FavoriteRestaurantSearchView;
+export default FavoriteRestaurantView;

@@ -2,7 +2,7 @@ import {
   beforeEach, describe, expect, it, jest,
 } from '@jest/globals';
 import FavoriteRestaurantSearchPresenter from '../src/scripts/views/pages/liked-restaurants/favorite-restaurant-search-presenter';
-import FavoriteRestaurantSearchView from '../src/scripts/views/pages/liked-restaurants/favorite-restaurant-search-view';
+import FavoriteRestaurantView from '../src/scripts/views/pages/liked-restaurants/favorite-restaurant-view';
 
 // eslint-disable-next-line
 describe('Searching restaurants', () => {
@@ -18,7 +18,7 @@ describe('Searching restaurants', () => {
   };
 
   const setRestaurantSearchContainer = () => {
-    view = new FavoriteRestaurantSearchView();
+    view = new FavoriteRestaurantView();
     document.body.innerHTML = view.getTemplate();
   };
 
@@ -70,10 +70,10 @@ describe('Searching restaurants', () => {
     // eslint-disable-next-line no-undef
     it('should show the restaurants found by Favorite Restaurants', (done) => {
       document
-        .getElementById('restaurant-search-container')
-        .addEventListener('restaurants:searched:updated', () => {
-          // eslint-disable-next-line no-undef
-          expect(document.querySelectorAll('.restaurant').length)
+        .getElementById('restaurants')
+        .addEventListener('restaurants:updated', () => {
+        // eslint-disable-next-line no-undef
+          expect(document.querySelectorAll('.resto-item').length)
             .toEqual(3);
           done(); // Panggil done() setelah pengujian selesai
         });
@@ -94,8 +94,8 @@ describe('Searching restaurants', () => {
     // eslint-disable-next-line no-undef
     it('should show the name of the restaurants found by Favorite Restaurants', (done) => {
       document
-        .getElementById('restaurant-search-container')
-        .addEventListener('restaurants:searched:updated', () => {
+        .getElementById('restaurants')
+        .addEventListener('restaurants:updated', () => {
           const restaurantTitles = document.querySelectorAll('.restaurant__title');
           // eslint-disable-next-line no-undef
           expect(restaurantTitles.item(0).textContent)
@@ -113,9 +113,9 @@ describe('Searching restaurants', () => {
       favoriteRestaurants.searchRestaurants.mockImplementation((query) => {
         if (query === 'restaurant a') {
           return [
-            { id: 111, title: 'restaurant abc' },
-            { id: 222, title: 'ada juga restaurant abcde' },
-            { id: 333, title: 'ini juga boleh restaurant a' },
+            { id: 111, name: 'restaurant abc' },
+            { id: 222, name: 'ada juga restaurant abcde' },
+            { id: 333, name: 'ini juga boleh restaurant a' },
           ];
         }
         return [];
@@ -127,8 +127,8 @@ describe('Searching restaurants', () => {
     // eslint-disable-next-line no-undef
     it('should show - when the restaurant returned does not contain a title', (done) => {
       document
-        .getElementById('restaurant-search-container')
-        .addEventListener('restaurants:searched:updated', () => {
+        .getElementById('restaurants')
+        .addEventListener('restaurants:updated', () => {
           const restaurantTitles = document.querySelectorAll('.restaurant__title');
           // eslint-disable-next-line no-undef
           expect(restaurantTitles.item(0).textContent)
@@ -194,9 +194,9 @@ describe('Searching restaurants', () => {
     // eslint-disable-next-line no-undef
     it('should show the empty message', (done) => {
       document
-        .getElementById('restaurant-search-container')
-        .addEventListener('restaurants:searched:updated', () => {
-          // eslint-disable-next-line no-undef
+        .getElementById('restaurants')
+        .addEventListener('restaurants:updated', () => {
+        // eslint-disable-next-line no-undef
           expect(document.querySelectorAll('.restaurant-item__not__found').length)
             .toEqual(1);
           done();
@@ -209,10 +209,10 @@ describe('Searching restaurants', () => {
     // eslint-disable-next-line no-undef
     it('should not show any restaurant', (done) => {
       document
-        .getElementById('restaurant-search-container')
-        .addEventListener('restaurants:searched:updated', () => {
-          // eslint-disable-next-line no-undef
-          expect(document.querySelectorAll('.restaurant').length)
+        .getElementById('restaurants')
+        .addEventListener('restaurants:updated', () => {
+        // eslint-disable-next-line no-undef
+          expect(document.querySelectorAll('.resto-item').length)
             .toEqual(0);
           done();
         });
