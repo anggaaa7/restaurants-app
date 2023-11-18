@@ -41,7 +41,9 @@ const createRestaurantItemTemplate = (restaurant) => `
     <div class="resto-item" tabindex="0">
         <div class="resto-item-header">
             <img crossorigin="anonymouse" class="resto-thumbnail lazyload" src="${CONFIG.BASE_IMAGE_URL + restaurant.pictureId}" alt="${restaurant.name || '-'}" />
-            <h2 class="restaurant__title resto-title"><a class="resto-name" href="${`/#/detail/${restaurant.id}`}">${restaurant.name || '-'}</a></h2>
+            <h2 class="restaurant__title resto-title">
+                <a class="resto-name" href="${`/#/detail/${restaurant.id}`}">${restaurant.name || '-'}</a>
+            </h2>
             <p>⭐️<span class="resto-item__rating">${restaurant.rating || '-'}</span></p>
         </div>
         <div class="resto-info">

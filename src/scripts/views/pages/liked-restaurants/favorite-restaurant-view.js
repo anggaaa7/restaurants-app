@@ -8,7 +8,6 @@ class FavoriteRestaurantView {
         <h2 class="content__heading">Your Liked Restaurant</h2>
             <input id="query" type="text">
             
-
               <div id="restaurants" class="restaurants">
               </div>
             </div>
