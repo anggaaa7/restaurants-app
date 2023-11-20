@@ -18,9 +18,11 @@ Scenario('liking one restaurant', ({ I }) => {
 
   I.amOnPage('/');
 
-  I.seeElement('.restautant__title a');
+  I.waitForElement('.resto-name', 10);
+  I.seeElement('.resto-name');
+
   // eslint-disable-next-line no-undef
-  I.click(locate('.restautant__title a').first());
+  I.click(locate('.resto-name').first());
 
   I.seeElement('#likeButton');
   // eslint-disable-next-line no-undef

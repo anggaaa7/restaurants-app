@@ -22,7 +22,7 @@
     "babel-jest": "^29.7.0",
     "babel-loader": "^8.3.0",
     "clean-webpack-plugin": "^4.0.0",
-    "codeceptjs": "^3.5.8",
+    "codeceptjs": "^3.5.4",
     "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^6.8.1",
     "eslint": "^8.51.0",
