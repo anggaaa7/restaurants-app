@@ -42,6 +42,10 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
+          // copywebpackplugin mengabaikan file yang berada di dalam folder images
+          globOptions: {
+            ignore: ['**/images/**'],
+          },
         },
       ],
     }),
