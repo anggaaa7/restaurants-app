@@ -2,14 +2,14 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+// const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const ImageminWebpackPlugin = require('imagemin-webpack-plugin').default;
 const ImageminMozjpeg = require('imagemin-mozjpeg');
 
 module.exports = {
   entry: {
     app: path.resolve(__dirname, 'src/scripts/index.js'),
-    sw: path.resolve(__dirname, 'src/scripts/sw.js'),
   },
   output: {
     filename: '[name].bundle.js',
@@ -66,9 +66,28 @@ module.exports = {
         {
           from: path.resolve(__dirname, 'src/public/'),
           to: path.resolve(__dirname, 'dist/'),
-          // copywebpackplugin mengabaikan file yang berada di dalam folder images
-          globOptions: {
-            ignore: ['**/images/**'],
+        },
+      ],
+    }),
+    new WorkboxWebpackPlugin.GenerateSW({
+      swDest: 'sw.js',
+      runtimeCaching: [
+        {
+          urlPattern: ({ url }) => url.href.startsWith(
+            'https://restaurant-api.dicoding.dev/',
+          ),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'dicodingRestaurant-api',
+          },
+        },
+        {
+          urlPattern: ({ url }) => url.href.startsWith(
+            'https://restaurant-api.dicoding.dev/images/medium/',
+          ),
+          handler: 'StaleWhileRevalidate',
+          options: {
+            cacheName: 'dicodingRestaurant-image-api',
           },
         },
       ],
@@ -81,6 +100,6 @@ module.exports = {
         }),
       ],
     }),
-    new BundleAnalyzerPlugin(),
+    // new BundleAnalyzerPlugin(),
   ],
 };
