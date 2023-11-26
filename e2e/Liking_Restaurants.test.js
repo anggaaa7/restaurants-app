@@ -15,7 +15,7 @@ Scenario('showing empty liked resstaurants', ({ I }) => {
 });
 
 // eslint-disable-next-line no-unused-vars, no-undef
-Scenario('liking one restaurant', async ({ I }) => {
+Scenario('liking and Unliking a restaurant', async ({ I }) => {
   I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
 
   I.amOnPage('/');
@@ -38,6 +38,16 @@ Scenario('liking one restaurant', async ({ I }) => {
   const likedRestaurantName = await I.grabTextFrom('.resto-name');
 
   assert.strictEqual(firstRestaurantName, likedRestaurantName);
+
+  // Unliking Restaurant
+  I.click(likedRestaurantName);
+  I.seeElement('#likeButton');
+  // eslint-disable-next-line no-undef
+  I.click('#likeButton');
+
+  I.amOnPage('/#/favorit');
+
+  I.see('Tidak ada restaurant untuk ditampilkan', '.restaurant-item__not__found');
 });
 
 // eslint-disable-next-line no-undef
